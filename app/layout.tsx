@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Newsreader, Manrope } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
+import Footer from "@/components/footer";
 
 const newsreader = Newsreader({
     variable: "--font-newsreader",
@@ -33,6 +34,7 @@ export default function RootLayout({
             <body className="min-h-full flex flex-col">
                 <Header />
                 {children}
+                <Footer />
             </body>
         </html>
     );
