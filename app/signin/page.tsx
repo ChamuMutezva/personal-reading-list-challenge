@@ -271,7 +271,7 @@ export default function SignInPage() {
             <footer className="w-full py-8 mt-auto bg-background border-t border-outline-variant/15">
                 <div className="flex flex-col md:flex-row justify-between items-center px-6 md:px-12 gap-4 max-w-7xl mx-auto">
                     <div className="text-xs text-on-surface-variant/60">
-                        © 2024 The Editorial Archive. All rights reserved.
+                        © 2026 The Editorial Archive. All rights reserved.
                     </div>
                     <nav className="flex gap-6">
                         <Link
