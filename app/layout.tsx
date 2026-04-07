@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
-import { Newsreader, Manrope } from "next/font/google";
+import { Newsreader, Manrope, Geist } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const newsreader = Newsreader({
     variable: "--font-newsreader",
@@ -29,7 +32,7 @@ export default function RootLayout({
     return (
         <html
             lang="en"
-            className={`${manrope.variable} ${newsreader.variable} h-full antialiased`}
+            className={cn("h-full", "antialiased", manrope.variable, newsreader.variable, "font-sans", geist.variable)}
         >
             <body className="min-h-full flex flex-col">
                 <Header />
