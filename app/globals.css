@@ -1,4 +1,8 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
 
 @theme {
     --font-family-headline:
@@ -8,55 +12,82 @@
 }
 
 :root {
-    --background: #fbf9f4;
-    --foreground: #1b1c19;
-    --card: #ffffff;
-    --card-foreground: #1b1c19;
-    --popover: #ffffff;
-    --popover-foreground: #1b1c19;
+    --card:
+        oklch(1 0 0);
+    --card-foreground:
+        oklch(0.145 0 0);
+    --popover:
+        oklch(1 0 0);
+    --popover-foreground:
+        oklch(0.145 0 0);
 
     /* Primary and secondary colors */
-    --primary: #173628;
-    --primary-foreground: #ffffff;
-    --secondary: #616044;
-    --secondary-foreground: #ffffff;
+    --primary:
+        oklch(0.205 0 0);
+    --primary-foreground:
+        oklch(0.985 0 0);
+    --secondary:
+        oklch(0.97 0 0);
+    --secondary-foreground:
+        oklch(0.205 0 0);
 
     /* Muted and Accent colors */
-    --muted: #f0eee9;
-    --muted-foreground: #424844;
-    --accent: #2e4d3e;
-    --accent-foreground: #9bbdaa;
+    --muted:
+        oklch(0.97 0 0);
+    --muted-foreground:
+        oklch(0.556 0 0);
+    --accent:
+        oklch(0.97 0 0);
+    --accent-foreground:
+        oklch(0.205 0 0);
 
     /* Destructive (error) */
-    --destructive: #ba1a1a;
+    --destructive:
+        oklch(0.577 0.245 27.325);
     --destructive-foreground: #ffffff;
 
     /* Borders, inputs, rings */
-    --border: #c1c8c2; /* outline-variant */
-    --input: #c1c8c2;
-    --ring: #173628; /* primary (focus ring) */
+    --border:
+        oklch(0.922 0 0); /* outline-variant */
+    --input:
+        oklch(0.922 0 0);
+    --ring:
+        oklch(0.708 0 0); /* primary (focus ring) */
 
     /* Chart colors  */
-    --chart-1: #472a07;
-    --chart-2: #61401b;
-    --chart-3: #dcac7f;
-    --chart-4: #eebd8e;
-    --chart-5: #ffdcbd;
+    --chart-1:
+        oklch(0.87 0 0);
+    --chart-2:
+        oklch(0.556 0 0);
+    --chart-3:
+        oklch(0.439 0 0);
+    --chart-4:
+        oklch(0.371 0 0);
+    --chart-5:
+        oklch(0.269 0 0);
 
     /* Radius */
-    --radius: 0.625rem;
+    --radius:
+        0.625rem;
 
     /* Sidebar (optional, uses same palette) */
-    --sidebar: #fbf9f4; /* background */
-    --sidebar-foreground: #1b1c19;
-    --sidebar-primary: #173628;
-    --sidebar-primary-foreground: #ffffff;
-    --sidebar-accent: #f0eee9;
-    --sidebar-accent-foreground: #1b1c19;
-    --sidebar-border: #c1c8c2;
-    --sidebar-ring: #173628;
+    --sidebar:
+        oklch(0.985 0 0); /* background */
+    --sidebar-foreground:
+        oklch(0.145 0 0);
+    --sidebar-primary:
+        oklch(0.205 0 0);
+    --sidebar-primary-foreground:
+        oklch(0.985 0 0);
+    --sidebar-accent:
+        oklch(0.97 0 0);
+    --sidebar-accent-foreground:
+        oklch(0.205 0 0);
+    --sidebar-border:
+        oklch(0.922 0 0);
+    --sidebar-ring:
+        oklch(0.708 0 0);
 
-    
     /* Extra editorial colors (optional, but keep for direct use) */
     --primary-container: #2e4d3e;
     --on-primary-container: #9bbdaa;
@@ -85,6 +116,10 @@
     --surface-dim: #dbdad5;
     --surface-bright: #fbf9f4;
     --surface-tint: #456555;
+    --background:
+        oklch(1 0 0);
+    --foreground:
+        oklch(0.145 0 0);
 }
 
 @theme inline {
@@ -121,13 +156,29 @@
     --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
     --color-sidebar-border: var(--sidebar-border);
     --color-sidebar-ring: var(--sidebar-ring);
+    --font-heading:
+        var(--font-sans);
+    --font-sans:
+        var(--font-sans);
+    --radius-sm:
+        calc(var(--radius) * 0.6);
+    --radius-md:
+        calc(var(--radius) * 0.8);
+    --radius-lg:
+        var(--radius);
+    --radius-xl:
+        calc(var(--radius) * 1.4);
+    --radius-2xl:
+        calc(var(--radius) * 1.8);
+    --radius-3xl:
+        calc(var(--radius) * 2.2);
+    --radius-4xl:
+        calc(var(--radius) * 2.6);
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        /* Core surfaces & text – using inverse palette */
-        --background: #30312e; /* inverse-surface */
-        --foreground: #f2f1ec; /* inverse-on-surface */
+        /* Core surfaces & text – using inverse palette */ /* inverse-surface */ /* inverse-on-surface */
         --card: #1b1c19; /* on-surface (dark) */
         --card-foreground: #fbf9f4; /* surface */
         --popover: #1b1c19;
@@ -205,8 +256,79 @@
     }
 }
 
-body {
-    background: var(--background);
-    color: var(--foreground);
-    font-family: Arial, Helvetica, sans-serif;
+.dark {
+    --background:
+        oklch(0.145 0 0);
+    --foreground:
+        oklch(0.985 0 0);
+    --card:
+        oklch(0.205 0 0);
+    --card-foreground:
+        oklch(0.985 0 0);
+    --popover:
+        oklch(0.205 0 0);
+    --popover-foreground:
+        oklch(0.985 0 0);
+    --primary:
+        oklch(0.922 0 0);
+    --primary-foreground:
+        oklch(0.205 0 0);
+    --secondary:
+        oklch(0.269 0 0);
+    --secondary-foreground:
+        oklch(0.985 0 0);
+    --muted:
+        oklch(0.269 0 0);
+    --muted-foreground:
+        oklch(0.708 0 0);
+    --accent:
+        oklch(0.269 0 0);
+    --accent-foreground:
+        oklch(0.985 0 0);
+    --destructive:
+        oklch(0.704 0.191 22.216);
+    --border:
+        oklch(1 0 0 / 10%);
+    --input:
+        oklch(1 0 0 / 15%);
+    --ring:
+        oklch(0.556 0 0);
+    --chart-1:
+        oklch(0.87 0 0);
+    --chart-2:
+        oklch(0.556 0 0);
+    --chart-3:
+        oklch(0.439 0 0);
+    --chart-4:
+        oklch(0.371 0 0);
+    --chart-5:
+        oklch(0.269 0 0);
+    --sidebar:
+        oklch(0.205 0 0);
+    --sidebar-foreground:
+        oklch(0.985 0 0);
+    --sidebar-primary:
+        oklch(0.488 0.243 264.376);
+    --sidebar-primary-foreground:
+        oklch(0.985 0 0);
+    --sidebar-accent:
+        oklch(0.269 0 0);
+    --sidebar-accent-foreground:
+        oklch(0.985 0 0);
+    --sidebar-border:
+        oklch(1 0 0 / 10%);
+    --sidebar-ring:
+        oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    }
+  body {
+    @apply bg-background text-foreground;
+    }
+  html {
+    @apply font-sans;
+    }
 }
