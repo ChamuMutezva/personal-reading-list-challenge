@@ -10,14 +10,14 @@ export default function HeroSection() {
             <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                 {/* Text Content */}
                 <div className="relative z-10 flex flex-col justify-center">
-                    <span className="text-secondary font-label uppercase tracking-widest text-sm font-bold mb-4 block">
+                    <span className="text-primary font-label uppercase tracking-widest text-sm font-bold mb-4 block">
                         An Archival Legacy
                     </span>
                     <h1 className="text-5xl sm:text-6xl lg:text-7xl font-headline text-primary-container leading-[1.1] mb-6">
                         Your Intellectual <br className="hidden sm:block" />
                         <span className="italic">Sanctuary</span>
                     </h1>
-                    <p className="text-lg sm:text-xl text-secondary max-w-lg mb-8 sm:mb-10 leading-relaxed font-body">
+                    <p className="text-lg sm:text-xl text-secondary-foreground max-w-lg mb-8 sm:mb-10 leading-relaxed font-body">
                         Organize, track, and celebrate your reading journey with
                         elegance. A digital home for the modern bibliophile.
                     </p>
@@ -37,7 +37,7 @@ export default function HeroSection() {
                         </Link>
                         <Link
                             href="/library?mode=guest"
-                            className="text-secondary font-medium hover:text-primary transition-colors underline underline-offset-4 decoration-outline-variant py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded px-1 -ml-1"
+                            className="text-secondary-foreground font-medium hover:opacity-60 transition-colors underline underline-offset-4 decoration-outline-variant py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded px-1 -ml-1"
                         >
                             Continue as Guest
                         </Link>
@@ -82,7 +82,7 @@ export default function HeroSection() {
                             &quot;A room without books is like a body without a
                             soul.&quot;
                         </blockquote>
-                        <cite className="text-xs text-secondary mt-2 font-label uppercase block not-italic">
+                        <cite className="text-xs text-muted-foreground mt-2 font-label uppercase block not-italic">
                             — Marcus Tullius Cicero
                         </cite>
                     </div>
