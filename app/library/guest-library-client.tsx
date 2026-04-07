@@ -8,6 +8,7 @@ import {
     addBookToLibraryAction,
     type SearchBook,
 } from "@/app/actions/books";
+import { useDebounce } from "use-debounce";
 
 type GuestBook = SearchBook & {
     status: "to-read" | "reading" | "finished";
@@ -24,6 +25,7 @@ export default function GuestLibraryClient() {
     const [results, setResults] = useState<SearchBook[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
+    const [debouncedQuery] = useDebounce(query, 800);
 
     // ✅ Single setState call: load from localStorage after mount
     useEffect(() => {
@@ -38,12 +40,31 @@ export default function GuestLibraryClient() {
         }
     }, []); // Runs once on mount
 
+    // ✅ Search when debounced query changes
+    useEffect(() => {
+        if (!debouncedQuery.trim()) return;
+
+        const performSearch = async () => {
+            setLoading(true);
+            setError(null);
+            const response = await searchBooksAction(debouncedQuery);
+            if (response.success) {
+                setResults(response.data || []);
+            } else {
+                setError(response.error || "Search failed");
+            }
+            setLoading(false);
+        };
+
+        performSearch();
+    }, [debouncedQuery]);
+
     const saveLibrary = (books: GuestBook[]) => {
         localStorage.setItem("guest_library", JSON.stringify(books));
         setLibrary(books);
     };
 
-    const handleSearch = async (e: React.FormEvent) => {
+    const handleSearch = async (e: React.SubmitEvent<HTMLFormElement>) => {
         e.preventDefault();
         setLoading(true);
         setError(null);
