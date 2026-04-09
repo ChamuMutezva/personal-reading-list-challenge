@@ -1,8 +1,10 @@
 import { Suspense } from "react";
-import GuestLibraryClient from './guest-library-client';
+import GuestLibraryClient from "./guest-library-client";
+import { stackServerApp } from "@/stack/server";
+import AuthLibraryClient from "./auth-library-client";
 
-export default function LibraryPage() {
-  
+export default async function LibraryPage() {
+    const user = await stackServerApp.getUser();
     return (
         <Suspense
             fallback={
@@ -11,7 +13,7 @@ export default function LibraryPage() {
                 </div>
             }
         >
-            <GuestLibraryClient />
+            {user ? <AuthLibraryClient /> : <GuestLibraryClient />}
         </Suspense>
     );
 }

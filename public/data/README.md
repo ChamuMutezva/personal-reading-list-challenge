@@ -12,18 +12,23 @@ Both files contain the same 45 curated books across 5 genres, plus intentional e
 ## Curated Books (45 books across 5 genres)
 
 ### Fiction (10 books)
+
 - The Great Gatsby, To Kill a Mockingbird, 1984, Pride and Prejudice, The Catcher in the Rye, Beloved, The Road, Normal People, A Gentleman in Moscow, Circe
 
 ### Non-Fiction (10 books)
+
 - Sapiens, Educated, The Immortal Life of Henrietta Lacks, Thinking Fast and Slow, Born a Crime, Atomic Habits, The Body, Quiet, Range, Say Nothing
 
 ### Sci-Fi & Fantasy (10 books)
+
 - Dune, The Left Hand of Darkness, Neuromancer, The Name of the Wind, Project Hail Mary, The Fifth Season, Piranesi, Children of Time, The Dispossessed, Ancillary Justice
 
 ### Self-Improvement (7 books)
+
 - Deep Work, The Psychology of Money, Digital Minimalism, Four Thousand Weeks, Essentialism, Thinking in Bets, The Obstacle Is the Way
 
 ### Tech & Programming (8 books)
+
 - The Pragmatic Programmer, Clean Code, Designing Data-Intensive Applications, A Philosophy of Software Design, Refactoring, The Mythical Man-Month, Don't Make Me Think, Eloquent JavaScript
 
 These books are chosen because they are well-known, span a wide range of genres and reading tastes, include books that developers would recognize and relate to, and provide real cover images from Open Library for a visually compelling guest experience.
@@ -72,6 +77,7 @@ The sample data includes intentional problems that test robust book data handlin
 Use `sample-books.json` to seed the guest library. The 45 books across 5 genres provide a visually compelling first impression with real book covers, varied reading states, and pre-populated statistics.
 
 **Recommended approach:**
+
 1. On "Try as Guest", load the sample books into the session
 2. Pre-assign books to shelves: ~15 on "Read" (with ratings and dates), ~5 on "Currently Reading" (with progress), ~15 on "Want to Read", ~5 on custom shelves ("Favorites", "Book Club")
 3. Pre-populate a reading goal (e.g., "Read 24 books in 2026" with 15 completed) so the goal UI is visible
