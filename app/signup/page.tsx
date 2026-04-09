@@ -2,66 +2,59 @@
 
 import Link from "next/link";
 import {
-    CredentialSignIn,
+    CredentialSignUp,
     MagicLinkSignIn,
     useStackApp,
 } from "@stackframe/stack";
 
-export default function SignInPage() {
+export default function SignUpPage() {
     const app = useStackApp();
 
     return (
         <div className="min-h-screen flex flex-col bg-background text-foreground font-body antialiased">
             {/* Header */}
-            <header className="fixed top-0 w-full z-50 bg-background/70 backdrop-blur-xl border-b border-outline-variant/10">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-                    <Link
-                        href="/"
-                        className="text-xl md:text-2xl font-headline italic text-primary hover:opacity-80 transition-opacity"
-                    >
-                        The Editorial Archive
-                    </Link>
-                    <div className="hidden md:flex items-center gap-8">
-                        <span className="font-label text-xs tracking-[0.2em] text-on-surface-variant/70 uppercase">
-                            Authentication Portal
-                        </span>
-                    </div>
+            <header className="fixed top-0 w-full z-50 bg-background/70 backdrop-blur-xl border-b border-outline-variant/10 flex justify-between items-center px-6 md:px-8 py-4 md:py-6">
+                <Link
+                    href="/"
+                    className="text-xl md:text-2xl font-headline italic text-primary hover:opacity-80 transition-opacity"
+                >
+                    The Editorial Archive
+                </Link>
+                <div className="hidden md:flex gap-8 items-center">
+                    <span className="font-label text-xs tracking-[0.2em] text-on-surface-variant/70 uppercase">
+                        Authentication Portal
+                    </span>
                 </div>
             </header>
 
             {/* Main Content */}
-            <main className="grow flex items-center justify-center pt-24 pb-12 px-4 sm:px-6 relative">
-                {/* Subtle background accent */}
+            <main className="grow flex items-center justify-center pt-24 pb-12 px-4 sm:px-6 paper-texture relative">
                 <div className="absolute inset-0 bg-linear-to-br from-background/20 via-transparent to-primary-container/5 pointer-events-none" />
 
-                {/* Card Container */}
                 <div className="w-full max-w-6xl grid md:grid-cols-12 gap-0 overflow-hidden rounded-2xl bg-surface-container-low shadow-2xl border border-outline-variant/20 animate-in fade-in slide-in-from-bottom-4 duration-500">
                     {/* Left Editorial Column */}
                     <div className="md:col-span-5 relative bg-gradient-to-br from-primary to-muted p-8 md:p-12 flex flex-col justify-between overflow-hidden">
-                        {/* Decorative icon */}
                         <div className="absolute top-0 right-0 p-6 opacity-15">
                             <span
-                                className="material-symbols-outlined text-[10rem] select-none"
+                                className="material-symbols-outlined text-[10rem]"
                                 style={{ fontVariationSettings: "'wght' 100" }}
                                 aria-hidden="true"
                             >
-                                history_edu
+                                auto_stories
                             </span>
                         </div>
 
-                        {/* Content */}
                         <div className="relative z-10 space-y-6">
                             <h1 className="font-headline text-4xl md:text-5xl text-primary-foreground italic leading-tight">
-                                Welcome back to the collection.
+                                Begin your archival journey.
                             </h1>
-                            <p className="font-body text-primary-foreground/90 text-base md:text-lg leading-relaxed max-w-xs">
-                                Access your curated journals, preserved
-                                manuscripts, and archival notes.
+                            <p className="font-body text-primary-foreground text-base md:text-lg leading-relaxed max-w-xs">
+                                Create a personal collection to track, annotate,
+                                and preserve your reading legacy.
                             </p>
                         </div>
 
-                        {/* Footer accent */}
-                        <div className="relative z-10 mt-8 md:mt-12">
+                        <div className="relative z-10 mt-12">
                             <div className="flex items-center gap-4 text-on-primary-container/80">
                                 <div className="w-12 h-px bg-on-primary-container/40" />
                                 <span className="text-[11px] uppercase tracking-[0.3em] font-bold">
@@ -70,11 +63,10 @@ export default function SignInPage() {
                             </div>
                         </div>
 
-                        {/* Floating badge */}
                         <div className="absolute -bottom-8 -right-8 w-40 h-40 md:w-48 md:h-48 rounded-full border border-on-primary-container/15 flex items-center justify-center backdrop-blur-sm">
                             <div className="w-28 h-28 md:w-32 md:h-32 rounded-full bg-tertiary-container/30 flex items-center justify-center backdrop-blur-md shadow-inner">
                                 <span
-                                    className="material-symbols-outlined text-on-tertiary-container text-3xl md:text-4xl select-none"
+                                    className="material-symbols-outlined text-on-tertiary-container text-3xl md:text-4xl"
                                     style={{
                                         fontVariationSettings: "'FILL' 1",
                                     }}
@@ -86,25 +78,21 @@ export default function SignInPage() {
                         </div>
                     </div>
 
-                    {/* Right Sign-In Form */}
-                    <div className="md:col-span-7 bg-surface-container-lowest p-6 sm:p-8 md:p-12 flex flex-col justify-center">
-                        {/* Header */}
-                        <div className="mb-6 md:mb-8">
+                    {/* Right Sign-Up Form */}
+                    <div className="md:col-span-7 bg-surface-container-lowest p-8 sm:p-12 md:p-16 flex flex-col justify-center">
+                        <div className="mb-8 md:mb-10">
                             <h2 className="font-headline text-2xl md:text-3xl text-primary mb-2">
-                                Sign In
+                                Create Account
                             </h2>
                             <p className="text-on-surface-variant text-sm">
-                                Enter your credentials to continue your
-                                research.
+                                Join the archive to start curating your
+                                collection.
                             </p>
                         </div>
 
-                        {/* Stack Auth Components - Wrapped with spacing & theming */}
-                        <div className="space-y-4">
-                            {/* Email/Password Form */}
-                            <div className="stack-auth-wrapper">
-                                <CredentialSignIn />
-                            </div>
+                        <div className="space-y-6">
+                            {/* Email & Password */}
+                            <CredentialSignUp />
 
                             {/* Divider */}
                             <div className="relative flex items-center py-2">
@@ -115,18 +103,16 @@ export default function SignInPage() {
                                 <div className="grow border-t border-outline-variant/30" />
                             </div>
 
-                            {/* Magic Link Sign In */}
-                            <div className="stack-auth-wrapper">
-                                <MagicLinkSignIn />
-                            </div>
+                            {/* Magic Link */}
+                            <MagicLinkSignIn />
 
-                            {/* Social Login Buttons */}
-                            <div className="grid grid-cols-2 gap-3 pt-2">
+                            {/* OAuth Buttons */}
+                            <div className="grid grid-cols-2 gap-3">
                                 <button
                                     type="button"
-                                    onClick={async () => {
-                                        await app.signInWithOAuth("google");
-                                    }}
+                                    onClick={() =>
+                                        app.signInWithOAuth("google")
+                                    }
                                     className="flex items-center justify-center gap-2 w-full border border-outline-variant/40 hover:border-primary hover:bg-surface-container-low py-3 rounded-xl font-medium text-primary transition-all active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-primary/50"
                                 >
                                     <svg
@@ -158,9 +144,9 @@ export default function SignInPage() {
                                 </button>
                                 <button
                                     type="button"
-                                    onClick={async () => {
-                                        await app.signInWithOAuth("github");
-                                    }}
+                                    onClick={() =>
+                                        app.signInWithOAuth("github")
+                                    }
                                     className="flex items-center justify-center gap-2 w-full border border-outline-variant/40 hover:border-primary hover:bg-surface-container-low py-3 rounded-xl font-medium text-primary transition-all active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-primary/50"
                                 >
                                     <svg
@@ -178,28 +164,15 @@ export default function SignInPage() {
                             </div>
                         </div>
 
-                        {/* Footer Links */}
-                        <div className="mt-8 pt-6 border-t border-outline-variant/20 text-center space-y-3">
+                        {/* Footer Link */}
+                        <div className="mt-10 text-center">
                             <p className="text-sm text-on-surface-variant/80">
-                                New to the Archive?{" "}
+                                Already a member?{" "}
                                 <Link
-                                    href="/sign-up"
+                                    href="/sign-in"
                                     className="text-primary font-semibold hover:underline underline-offset-4 transition-all"
                                 >
-                                    Create an account
-                                </Link>
-                            </p>
-                            <p className="text-xs text-on-surface-variant/60">
-                                By signing in, you agree to our{" "}
-                                <Link href="/terms" className="hover:underline">
-                                    Terms
-                                </Link>{" "}
-                                &{" "}
-                                <Link
-                                    href="/privacy"
-                                    className="hover:underline"
-                                >
-                                    Privacy Policy
+                                    Sign in to your account
                                 </Link>
                             </p>
                         </div>

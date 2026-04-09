@@ -4,8 +4,11 @@ import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { cn } from "@/lib/utils";
+import { StackProvider, StackTheme } from "@stackframe/stack";
+import { stackClientApp } from "@/stack/client";
+import { stackServerApp } from "@/stack/server";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 const newsreader = Newsreader({
     variable: "--font-newsreader",
@@ -29,15 +32,27 @@ export default function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+   
     return (
         <html
             lang="en"
-            className={cn("h-full", "antialiased", manrope.variable, newsreader.variable, "font-sans", geist.variable)}
+            className={cn(
+                "h-full",
+                "antialiased",
+                manrope.variable,
+                newsreader.variable,
+                "font-sans",
+                geist.variable,
+            )}
         >
             <body className="min-h-full flex flex-col">
-                <Header />
-                {children}
-                <Footer />
+                <StackProvider app={stackServerApp} >
+                    <StackTheme>
+                        <Header />
+                        {children}
+                        <Footer />
+                    </StackTheme>
+                </StackProvider>
             </body>
         </html>
     );

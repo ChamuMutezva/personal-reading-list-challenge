@@ -4,7 +4,7 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
-
+import { UserButton } from "@stackframe/stack";
 
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
@@ -55,18 +55,7 @@ export default function Header() {
                         </ul>
 
                         <div className="flex items-center gap-3 ml-4 pl-4 border-l border-border">
-                            <Link
-                                href="/signin"
-                                className="text-sm font-bold text-on-surface-variant hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded px-2 py-1"
-                            >
-                                Sign In
-                            </Link>
-                            <Link
-                                href="/signup"
-                                className="text-sm font-bold bg-primary text-background px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-                            >
-                                Sign Up
-                            </Link>
+                            <UserButton />
                         </div>
                     </nav>
 
@@ -79,7 +68,11 @@ export default function Header() {
                         aria-label={isOpen ? "Close menu" : "Open menu"}
                         className="md:hidden p-2 rounded-md text-on-surface-variant hover:bg-surface-variant/10 transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
                     >
-                        {isOpen ? <X width={24} height={24}/> : <Menu width={24} height={24} />}
+                        {isOpen ? (
+                            <X width={24} height={24} />
+                        ) : (
+                            <Menu width={24} height={24} />
+                        )}
                     </button>
                 </div>
             </div>
