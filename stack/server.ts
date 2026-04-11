@@ -7,7 +7,7 @@ export const stackServerApp = new StackServerApp({
   urls: {
     signIn: '/signin',
     afterSignIn: "/library",
-    afterSignUp: "/library?onboarding=true",
+    afterSignUp: "/library",
     afterSignOut: "/",
   },
 });

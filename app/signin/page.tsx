@@ -124,8 +124,8 @@ export default function SignInPage() {
                             <div className="grid grid-cols-2 gap-3 pt-2">
                                 <button
                                     type="button"
-                                    onClick={async () => {
-                                        await app.signInWithOAuth("google");
+                                    onClick={() => {
+                                        app.signInWithOAuth("google");
                                     }}
                                     className="flex items-center justify-center gap-2 w-full border border-outline-variant/40 hover:border-primary hover:bg-surface-container-low py-3 rounded-xl font-medium text-primary transition-all active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-primary/50"
                                 >
@@ -158,8 +158,8 @@ export default function SignInPage() {
                                 </button>
                                 <button
                                     type="button"
-                                    onClick={async () => {
-                                        await app.signInWithOAuth("github");
+                                    onClick={() => {
+                                        app.signInWithOAuth("github");
                                     }}
                                     className="flex items-center justify-center gap-2 w-full border border-outline-variant/40 hover:border-primary hover:bg-surface-container-low py-3 rounded-xl font-medium text-primary transition-all active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-primary/50"
                                 >

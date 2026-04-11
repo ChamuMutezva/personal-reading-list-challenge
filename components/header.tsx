@@ -53,12 +53,11 @@ export default function Header() {
                                 </li>
                             ))}
                         </ul>
-
-                        <div className="flex items-center gap-3 ml-4 pl-4 border-l border-border">
-                            <UserButton />
-                        </div>
                     </nav>
 
+                    <div className="flex items-center gap-3 ml-4 pl-4 border-l border-border">
+                        <UserButton />
+                    </div>
                     {/* Mobile Toggle */}
                     <button
                         type={"button"}
@@ -101,22 +100,6 @@ export default function Header() {
                                 {link.label}
                             </Link>
                         ))}
-                        <div className="mt-4 pt-4 border-t border-border space-y-2">
-                            <Link
-                                href="/signin"
-                                onClick={closeMenu}
-                                className="block w-full text-center px-3 py-2 text-base font-bold text-on-surface-variant hover:text-primary transition-colors rounded-md"
-                            >
-                                Sign In
-                            </Link>
-                            <Link
-                                href="/signup"
-                                onClick={closeMenu}
-                                className="block w-full text-center px-3 py-2 text-base font-bold bg-primary text-background rounded-lg hover:bg-primary/90 transition-colors"
-                            >
-                                Sign Up
-                            </Link>
-                        </div>
                     </nav>
                 </div>
             )}
