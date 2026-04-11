@@ -1,6 +1,6 @@
+"use client";
 import { StackHandler } from "@stackframe/stack";
-import { stackServerApp } from "@/stack/server";
 
 export default function Handler() {
-  return <StackHandler fullPage={true} app={stackServerApp} />;
+  return <StackHandler fullPage={true} />;
 }

@@ -5,11 +5,7 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { cn } from "@/lib/utils";
 import { StackProvider, StackTheme } from "@stackframe/stack";
-import { stackClientApp } from "@/stack/client";
 import { stackServerApp } from "@/stack/server";
-import { SyncGuestLibrary } from "@/components/sync-library-guest";
-import { Suspense } from "react";
-
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 const newsreader = Newsreader({
@@ -45,13 +41,11 @@ export default function RootLayout({
                 "font-sans",
                 geist.variable,
             )}
+            suppressHydrationWarning
         >
             <body className="min-h-full flex flex-col">
                 <StackProvider app={stackServerApp}>
-                    <StackTheme>
-                        <Suspense fallback={null}>
-                            <SyncGuestLibrary />
-                        </Suspense>
+                    <StackTheme>                       
                         <Header />
                         {children}
                         <Footer />
