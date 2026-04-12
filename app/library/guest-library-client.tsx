@@ -178,7 +178,7 @@ export default function GuestLibraryClient() {
                                         <h3 className="font-medium text-sm truncate">
                                             {book.title}
                                         </h3>
-                                        <p className="text-xs text-secondary truncate">
+                                        <p className="text-xs text-primary truncate">
                                             {book.author}
                                         </p>
                                         <button
@@ -193,7 +193,7 @@ export default function GuestLibraryClient() {
                             );
                         })}
                         {results.length === 0 && !loading && !error && (
-                            <p className="text-sm text-secondary text-center py-4">
+                            <p className="text-sm text-primary text-center py-4">
                                 Search to find books
                             </p>
                         )}
@@ -211,10 +211,10 @@ export default function GuestLibraryClient() {
                         {library.length === 0 ? (
                             // Empty state as a grid item (col-span-full)
                             <div className="col-span-full border-2 border-dashed border-border rounded-lg p-12 text-center">
-                                <p className="text-secondary">
+                                <p className="text-primary">
                                     Your library is empty
                                 </p>
-                                <p className="text-sm text-secondary/70">
+                                <p className="text-sm text-primary">
                                     Search and add books to get started.
                                 </p>
                             </div>

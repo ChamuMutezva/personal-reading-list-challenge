@@ -6,12 +6,22 @@ export interface SearchBook {
     author: string;
     coverUrl: string | null;
     publishedYear: string | null;
+    publishedDate?: string | null;
     description: string | null;
+    pageCount?: number | null;
+    averageRating?: number | null;
+    ratingsCount?: number | null;
+    publisher?: string | null;
+    language?: string | null;
+    isbn13?: string | null;
+    infoLink?: string | null;
 }
 interface GoogleBooksResponse {
     items?: Array<{
         id: string;
         volumeInfo: {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            industryIdentifiers: any;
             title: string;
             authors?: string[];
             publishedDate?: string;
@@ -19,6 +29,11 @@ interface GoogleBooksResponse {
             imageLinks?: {
                 thumbnail?: string;
             };
+            pageCount?: number;
+            averageRating?: number;
+            ratingsCount?: number;
+            publisher?: string;
+            infoLink?: string;
         };
     }>;
 }
@@ -63,13 +78,24 @@ function normalizeBook(
     let cover = vi.imageLinks?.thumbnail || null;
     if (cover) cover = cover.replace("http://", "https://");
 
+     // Safely extract ISBN-13
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const isbn13 = vi.industryIdentifiers?.find((id: any) => id.type === 'ISBN_13')?.identifier || null;
+
     return {
         googleId: item.id,
         title: vi.title || "Unknown Title",
         author: vi.authors?.join(", ") || "Unknown Author",
         coverUrl: cover,
         publishedYear: vi.publishedDate?.slice(0, 4) || null,
+        publishedDate: vi.publishedDate || null,
         description: vi.description || null,
+        pageCount: vi.pageCount || null,
+        averageRating: vi.averageRating || null,
+        ratingsCount: vi.ratingsCount || null,
+        publisher: vi.publisher || null, 
+        isbn13,
+        infoLink: vi.infoLink || null,   
     };
 }
 
@@ -121,9 +147,7 @@ export async function addBookToLibraryAction(
         // TODO: Replace with your actual Neon DB logic
         // Example using @neondatabase/serverless:
         // import { db } from '@/lib/db';
-        // await db`INSERT INTO books ...`;
-
-        console.log("Adding to library (mock):", book.googleId);
+        // await db`INSERT INTO books ...`;      
 
         revalidatePath("/library");
         return { success: true };

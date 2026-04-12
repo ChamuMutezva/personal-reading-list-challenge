@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { type LibraryBook } from "@/app/actions/library";
 import { STATUS_CONFIG } from "@/lib/helpers";
+import Link from "next/link";
 interface BookCardProps {
     book: LibraryBook;
     onUpdateStatus: (id: string, status: LibraryBook["status"]) => void;
@@ -88,6 +89,15 @@ export const BookCard = ({
                     </p>
                 )}
 
+                <Link
+                    href={`/library/book/${book.googleId}`}
+                    className="flex gap-3 p-3 bg-surface border border-border rounded-lg hover:border-primary/50 transition-colors group"
+                >
+                    <span className="text-xs text-primary font-medium">
+                        View Details
+                    </span>
+                </Link>
+
                 <div className="flex items-center gap-2 mt-3 pt-3 border-t border-border">
                     <div className="relative flex-1">
                         <select
@@ -124,7 +134,7 @@ export const BookCard = ({
                     <button
                         onClick={() => onRemove(book.id)}
                         disabled={isUpdating}
-                        className="p-1.5 text-secondary hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors disabled:opacity-50"
+                        className="p-1.5 text-primary hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors disabled:opacity-50"
                         aria-label={`Remove ${book.title} from library`}
                         title="Remove from library"
                     >

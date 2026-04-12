@@ -82,7 +82,7 @@ export default function AuthLibraryClient() {
         async (book: SearchBook) => {
             if (library.some((b) => b.googleId === book.googleId)) return;
 
-            const response = await addBookToLibraryAction(book);
+            const response = await addBookToLibraryAction(book);           
             if (response.success) {
                 const newBook: LibraryBook = {
                     id: crypto.randomUUID(),
