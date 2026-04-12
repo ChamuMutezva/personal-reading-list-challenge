@@ -18,6 +18,9 @@ export async function migrateGuestLibraryAction(books: SearchBook[]) {
       `;
 
             const bookId = bookResult[0]?.id;
+            if (!bookId) {
+                throw new Error(`Failed to upsert book: ${book.googleId}`);
+            }
             await db`
         INSERT INTO user_library (book_id, user_id, status)
         VALUES (${bookId}, ${user.id}, 'to-read')

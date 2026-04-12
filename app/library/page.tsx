@@ -5,8 +5,7 @@ import AuthLibraryClient from "./auth-library-client";
 import { SyncGuestLibrary } from "@/components/sync-library-guest";
 
 export default async function LibraryPage() {
-    const user = await stackServerApp.getUser();
-    console.log("Current user:", user); // Debugging line to check user state
+    const user = await stackServerApp.getUser();   
     return (
         <>
             <Suspense
