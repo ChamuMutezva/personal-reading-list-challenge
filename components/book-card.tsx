@@ -84,7 +84,7 @@ export const BookCard = ({
                     {book.author}
                 </p>
                 {book.publishedYear && (
-                    <p className="text-xs text-secondary/60 mt-0.5">
+                    <p className="text-xs text-foreground/75 mt-0.5">
                         {book.publishedYear}
                     </p>
                 )}
@@ -93,7 +93,7 @@ export const BookCard = ({
                     href={`/library/book/${book.googleId}`}
                     className="flex gap-3 p-3 bg-surface border border-border rounded-lg hover:border-primary/50 transition-colors group"
                 >
-                    <span className="text-xs text-primary font-medium">
+                    <span className="text-xs text-foreground font-medium">
                         View Details
                     </span>
                 </Link>
@@ -134,7 +134,7 @@ export const BookCard = ({
                     <button
                         onClick={() => onRemove(book.id)}
                         disabled={isUpdating}
-                        className="p-1.5 text-primary hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors disabled:opacity-50"
+                        className="p-1.5 text-foreground hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors disabled:opacity-50"
                         aria-label={`Remove ${book.title} from library`}
                         title="Remove from library"
                     >

@@ -27,7 +27,7 @@ export default function Header() {
                     {/* Brand */}
                     <Link
                         href="/"
-                        className="text-2xl font-family-headline italic text-primary hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+                        className="text-2xl font-foreground italic hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
                     >
                         The Editorial Archive
                     </Link>
@@ -44,8 +44,8 @@ export default function Header() {
                                         href={link.href}
                                         className={`text-sm font-bold transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded px-1 py-0.5 ${
                                             isActive(link.href)
-                                                ? "text-primary border-b-2 border-primary"
-                                                : "text-on-surface-variant hover:text-primary"
+                                                ? "text-foreground border-b-2 border-foreground"
+                                                : "text-on-surface-variant hover:text-accent"
                                         }`}
                                     >
                                         {link.label}
@@ -55,10 +55,9 @@ export default function Header() {
                         </ul>
                     </nav>
 
-                    <div className="flex items-center gap-3 ml-4 pl-4 border-l border-border">
+                    <div className="flex items-center gap-3 md:ml-4 md:pl-4 md:border-l border-border">
                         <UserButton />
-                    </div>
-                    {/* Mobile Toggle */}
+                    </div>                    {/* Mobile Toggle */}
                     <button
                         type={"button"}
                         onClick={() => setIsOpen(!isOpen)}
@@ -93,8 +92,8 @@ export default function Header() {
                                 onClick={closeMenu}
                                 className={`block px-3 py-2 text-base font-bold rounded-md transition-colors ${
                                     isActive(link.href)
-                                        ? "bg-primary/10 text-primary"
-                                        : "text-on-surface-variant hover:bg-surface-variant/10 hover:text-primary"
+                                        ? "bg-primary/10 text-foreground"
+                                        : "text-on-surface-variant hover:bg-surface-variant/10 hover:text-accent"
                                 }`}
                             >
                                 {link.label}

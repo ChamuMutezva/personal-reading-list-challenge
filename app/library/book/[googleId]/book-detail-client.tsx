@@ -118,7 +118,7 @@ export function BookDetailClient({
                 {/* Breadcrumb / Back */}
                 <Link
                     href="/library"
-                    className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary mb-6 transition-colors"
+                    className="inline-flex items-center gap-2 text-sm text-foreground hover:text-accent-hover mb-6 transition-colors"
                 >
                     <svg
                         className="w-4 h-4"
@@ -171,42 +171,43 @@ export function BookDetailClient({
                                     </div>
                                 )}
                             </div>
-                              {/* Progress Indicator Overlay */}
-                        {libraryBookId &&
-                            book.pageCount &&
-                            book.pageCount > 0 && (
-                                <div className="absolute bottom-3 left-3 right-3 bg-background/90 backdrop-blur-sm rounded-lg p-3 border border-border/50">
-                                    <div className="flex items-center justify-between mb-2">
-                                        <span className="text-xs font-medium text-foreground">
-                                            Reading Progress
-                                        </span>
-                                        <span className="text-xs font-semibold text-primary">
-                                            {progressPercent}%
-                                        </span>
-                                    </div>
+                            {/* Progress Indicator Overlay */}
+                            {libraryBookId &&
+                                book.pageCount &&
+                                book.pageCount > 0 && (
+                                    <div className="absolute bottom-3 left-3 right-3 bg-background/90 backdrop-blur-sm rounded-lg p-3 border border-border/50">
+                                        <div className="flex items-center justify-between mb-2">
+                                            <span className="text-xs font-medium text-foreground">
+                                                Reading Progress
+                                            </span>
+                                            <span className="text-xs font-semibold text-foreground">
+                                                {progressPercent}%
+                                            </span>
+                                        </div>
 
-                                    {/* Progress Bar */}
-                                    <div className="w-full h-2 bg-border rounded-full overflow-hidden">
-                                        <div
-                                            className="h-full bg-primary rounded-full transition-all duration-300 ease-out"
-                                            style={{
-                                                width: `${progressPercent}%`,
-                                            }}
-                                            role="progressbar"
-                                            aria-valuenow={progressPercent}
-                                            aria-valuemin={0}
-                                            aria-valuemax={100}
-                                            aria-label={`Reading progress: ${progressPercent}%`}
-                                        />
-                                    </div>
+                                        {/* Progress Bar */}
+                                        <div className="w-full h-2 bg-border rounded-full overflow-hidden">
+                                            <div
+                                                className="h-full bg-primary rounded-full transition-all duration-300 ease-out"
+                                                style={{
+                                                    width: `${progressPercent}%`,
+                                                }}
+                                                role="progressbar"
+                                                aria-valuenow={progressPercent}
+                                                aria-valuemin={0}
+                                                aria-valuemax={100}
+                                                aria-label={`Reading progress: ${progressPercent}%`}
+                                            />
+                                        </div>
 
-                                    {/* Pages read indicator */}
-                                    <p className="text-[10px] text-secondary mt-1.5">
-                                        {pagesRead} of {book.pageCount} pages
-                                    </p>
-                                </div>
-                            )}
-                        </div>                      
+                                        {/* Pages read indicator */}
+                                        <p className="text-xs text-on-surface-variant mt-1.5">
+                                            {pagesRead} of {book.pageCount}{" "}
+                                            pages
+                                        </p>
+                                    </div>
+                                )}
+                        </div>
                     </div>
 
                     {/* Details */}
@@ -318,7 +319,7 @@ export function BookDetailClient({
                                                 >
                                                     Pages Read
                                                 </label>
-                                                <span className="text-sm font-semibold text-primary">
+                                                <span className="text-sm font-semibold text-foreground">
                                                     {pagesRead} /{" "}
                                                     {book.pageCount}
                                                 </span>
@@ -341,7 +342,7 @@ export function BookDetailClient({
                                             />
 
                                             {/* Slider ticks for visual reference */}
-                                            <div className="flex justify-between mt-1 text-[10px] text-secondary">
+                                            <div className="flex justify-between mt-1 text-[10px] text-foreground">
                                                 <span>0</span>
                                                 <span>
                                                     {Math.round(
@@ -370,7 +371,7 @@ export function BookDetailClient({
                                                     (pagesRead ?? 0) >=
                                                         book.pageCount
                                                 }
-                                                className="px-3 py-1.5 text-xs font-medium bg-surface-variant text-foreground rounded-lg hover:bg-surface-variant/80 disabled:opacity-50 transition-colors"
+                                                className="px-3 py-1.5 text-xs font-medium cursor-pointer bg-surface-variant text-foreground rounded-lg hover:bg-surface-variant/80 disabled:opacity-50 transition-colors"
                                             >
                                                 +10 pages
                                             </button>
@@ -390,7 +391,7 @@ export function BookDetailClient({
                                                     (pagesRead ?? 0) >=
                                                         book.pageCount
                                                 }
-                                                className="px-3 py-1.5 text-xs font-medium bg-surface-variant text-foreground rounded-lg hover:bg-surface-variant/80 disabled:opacity-50 transition-colors"
+                                                className="px-3 py-1.5 text-xs font-medium bg-outline cursor-pointer  text-foreground rounded-lg hover:bg-surface-variant/80 disabled:opacity-50 transition-colors"
                                             >
                                                 +25 pages
                                             </button>
@@ -406,7 +407,7 @@ export function BookDetailClient({
                                                     (pagesRead ?? 0) >=
                                                         book.pageCount
                                                 }
-                                                className="px-3 py-1.5 text-xs font-medium bg-primary/10 text-primary rounded-lg hover:bg-primary/20 disabled:opacity-50 transition-colors"
+                                                className="px-3 py-1.5 text-xs font-medium cursor-pointer bg-primary/95 text-foreground rounded-lg hover:bg-primary/20 disabled:opacity-50 transition-colors"
                                             >
                                                 Mark as Finished
                                             </button>
@@ -445,14 +446,12 @@ export function BookDetailClient({
                                         disabled={loading}
                                         className="flex-1 px-4 py-3 border border-border rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-primary/20 disabled:opacity-50"
                                     >
-                                        <option value="to-read">
-                                            📖 To Read
-                                        </option>
+                                        <option value="to-read">To Read</option>
                                         <option value="reading">
-                                            📖 Currently Reading
+                                            Currently Reading
                                         </option>
                                         <option value="finished">
-                                            ✅ Finished
+                                            Finished
                                         </option>
                                     </select>
                                     <button
@@ -473,7 +472,7 @@ export function BookDetailClient({
                                     href={book.infoLink}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="text-sm text-primary hover:underline flex items-center gap-1"
+                                    className="text-sm text-foreground hover:underline flex items-center gap-1"
                                 >
                                     View on Google Books ↗
                                 </a>
@@ -483,7 +482,7 @@ export function BookDetailClient({
                                     href={book.previewLink}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="text-sm text-primary hover:underline flex items-center gap-1"
+                                    className="text-sm text-foreground hover:underline flex items-center gap-1"
                                 >
                                     Read Preview ↗
                                 </a>
