@@ -10,7 +10,7 @@ export default function HeroSection() {
             <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                 {/* Text Content */}
                 <div className="relative z-10 flex flex-col justify-center">
-                    <span className="text-primary font-label uppercase tracking-widest text-sm font-bold mb-4 block">
+                    <span className="text-foreground font-label uppercase tracking-widest text-sm font-bold mb-4 block">
                         An Archival Legacy
                     </span>
                     <h1 className="text-5xl sm:text-6xl lg:text-7xl font-headline text-primary-container leading-[1.1] mb-6">
