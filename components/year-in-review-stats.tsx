@@ -7,7 +7,7 @@ interface StatBook {
   rating?: number | null;
   progressPercent: number;
   pageCount: number;
-  genre: string;
+  genre?: string;
 }
 
 interface YearInReviewStatsProps {
@@ -34,9 +34,9 @@ export function YearInReviewStats({ books, className = "" }: Readonly<YearInRevi
     
     // Top genre (by books with any progress)
     const genreCounts = books
-      .filter((b) => b.status !== "to-read")
+      .filter((b) => b.status !== "to-read" && b.genre)
       .reduce<Record<string, number>>((acc, b) => {
-        acc[b.genre] = (acc[b.genre] || 0) + 1;
+        acc[b.genre!] = (acc[b.genre!] || 0) + 1;
         return acc;
       }, {});
     
