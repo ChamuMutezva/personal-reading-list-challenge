@@ -1,0 +1,73 @@
+// data/curated-guest-library.ts
+export interface CuratedBook {
+  publishedYear?: number;
+  description?: string;
+  googleId: string;
+  title: string;
+  author: string;
+  coverUrl: string;
+  genre: "Fiction" | "Non-Fiction" | "Sci-Fi & Fantasy" | "Self-Improvement" | "Tech & Programming";
+  pageCount: number;
+  status: "to-read" | "reading" | "finished";
+  progressPercent: number; // 0-100
+  rating?: number; // 1-5
+  notes?: string;
+  dateAdded: string;
+}
+
+export const CURATED_GUEST_LIBRARY: CuratedBook[] = [
+  // 📖 FICTION (9)
+  { googleId: "pUUJy_868vUC", title: "Next", author: "Michael Crichton", coverUrl: "https://books.google.com/books/content?id=pUUJy_868vUC&printsec=frontcover&img=1&zoom=1", genre: "Fiction", pageCount: 416, status: "reading", progressPercent: 62, rating: 4, notes: "Genetics thriller feels incredibly relevant today.", dateAdded: "2025-08-12" },
+  { googleId: "k8p6DwAAQBAJ", title: "The Great Gatsby", author: "F. Scott Fitzgerald", coverUrl: "https://books.google.com/books/content?id=k8p6DwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Fiction", pageCount: 180, status: "finished", progressPercent: 100, rating: 5, dateAdded: "2025-07-01" },
+  { googleId: "wKj1DwAAQBAJ", title: "1984", author: "George Orwell", coverUrl: "https://books.google.com/books/content?id=wKj1DwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Fiction", pageCount: 328, status: "finished", progressPercent: 100, rating: 5, dateAdded: "2025-06-15" },
+  { googleId: "Yh1bDwAAQBAJ", title: "Pride and Prejudice", author: "Jane Austen", coverUrl: "https://books.google.com/books/content?id=Yh1bDwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Fiction", pageCount: 279, status: "to-read", progressPercent: 0, dateAdded: "2025-08-20" },
+  { googleId: "b2t7DwAAQBAJ", title: "To Kill a Mockingbird", author: "Harper Lee", coverUrl: "https://books.google.com/books/content?id=b2t7DwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Fiction", pageCount: 281, status: "reading", progressPercent: 45, rating: 4, dateAdded: "2025-08-05" },
+  { googleId: "c5v8DwAAQBAJ", title: "The Alchemist", author: "Paulo Coelho", coverUrl: "https://books.google.com/books/content?id=c5v8DwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Fiction", pageCount: 197, status: "finished", progressPercent: 100, rating: 4, dateAdded: "2025-05-10" },
+  { googleId: "d7x9DwAAQBAJ", title: "Brave New World", author: "Aldous Huxley", coverUrl: "https://books.google.com/books/content?id=d7x9DwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Fiction", pageCount: 311, status: "to-read", progressPercent: 0, dateAdded: "2025-08-22" },
+  { googleId: "e9y0DwAAQBAJ", title: "The Kite Runner", author: "Khaled Hosseini", coverUrl: "https://books.google.com/books/content?id=e9y0DwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Fiction", pageCount: 371, status: "reading", progressPercent: 78, rating: 5, dateAdded: "2025-07-18" },
+  { googleId: "f0z1DwAAQBAJ", title: "Where the Crawdads Sing", author: "Delia Owens", coverUrl: "https://books.google.com/books/content?id=f0z1DwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Fiction", pageCount: 368, status: "finished", progressPercent: 100, rating: 4, dateAdded: "2025-06-30" },
+
+  // 🌍 NON-FICTION (9)
+  { googleId: "g1a2DwAAQBAJ", title: "Sapiens", author: "Yuval Noah Harari", coverUrl: "https://books.google.com/books/content?id=g1a2DwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Non-Fiction", pageCount: 443, status: "reading", progressPercent: 34, rating: 5, dateAdded: "2025-08-01" },
+  { googleId: "h2b3DwAAQBAJ", title: "Educated", author: "Tara Westover", coverUrl: "https://books.google.com/books/content?id=h2b3DwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Non-Fiction", pageCount: 334, status: "finished", progressPercent: 100, rating: 5, dateAdded: "2025-05-22" },
+  { googleId: "i3c4DwAAQBAJ", title: "Becoming", author: "Michelle Obama", coverUrl: "https://books.google.com/books/content?id=i3c4DwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Non-Fiction", pageCount: 448, status: "finished", progressPercent: 100, rating: 4, dateAdded: "2025-04-15" },
+  { googleId: "j4d5DwAAQBAJ", title: "Bad Blood", author: "John Carreyrou", coverUrl: "https://books.google.com/books/content?id=j4d5DwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Non-Fiction", pageCount: 352, status: "to-read", progressPercent: 0, dateAdded: "2025-08-18" },
+  { googleId: "k5e6DwAAQBAJ", title: "Thinking, Fast and Slow", author: "Daniel Kahneman", coverUrl: "https://books.google.com/books/content?id=k5e6DwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Non-Fiction", pageCount: 499, status: "reading", progressPercent: 22, rating: 4, dateAdded: "2025-07-10" },
+  { googleId: "l6f7DwAAQBAJ", title: "Outliers", author: "Malcolm Gladwell", coverUrl: "https://books.google.com/books/content?id=l6f7DwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Non-Fiction", pageCount: 309, status: "finished", progressPercent: 100, rating: 4, dateAdded: "2025-06-05" },
+  { googleId: "m7g8DwAAQBAJ", title: "Quiet", author: "Susan Cain", coverUrl: "https://books.google.com/books/content?id=m7g8DwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Non-Fiction", pageCount: 352, status: "to-read", progressPercent: 0, dateAdded: "2025-08-25" },
+  { googleId: "n8h9DwAAQBAJ", title: "The Immortal Life of Henrietta Lacks", author: "Rebecca Skloot", coverUrl: "https://books.google.com/books/content?id=n8h9DwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Non-Fiction", pageCount: 381, status: "reading", progressPercent: 55, rating: 5, dateAdded: "2025-07-28" },
+  { googleId: "o9i0DwAAQBAJ", title: "Guns, Germs, and Steel", author: "Jared Diamond", coverUrl: "https://books.google.com/books/content?id=o9i0DwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Non-Fiction", pageCount: 480, status: "finished", progressPercent: 100, rating: 4, dateAdded: "2025-05-12" },
+
+  // 🌌 SCI-FI & FANTASY (9)
+  { googleId: "r5Y8DwAAQBAJ", title: "Dune", author: "Frank Herbert", coverUrl: "https://books.google.com/books/content?id=r5Y8DwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Sci-Fi & Fantasy", pageCount: 688, status: "reading", progressPercent: 41, rating: 5, notes: "World-building is unmatched.", dateAdded: "2025-08-03" },
+  { googleId: "4iJnEAAAQBAJ", title: "Project Hail Mary", author: "Andy Weir", coverUrl: "https://books.google.com/books/content?id=4iJnEAAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Sci-Fi & Fantasy", pageCount: 476, status: "finished", progressPercent: 100, rating: 5, dateAdded: "2025-06-20" },
+  { googleId: "t1a3DwAAQBAJ", title: "The Name of the Wind", author: "Patrick Rothfuss", coverUrl: "https://books.google.com/books/content?id=t1a3DwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Sci-Fi & Fantasy", pageCount: 662, status: "reading", progressPercent: 68, rating: 5, dateAdded: "2025-07-15" },
+  { googleId: "u2b4DwAAQBAJ", title: "Neuromancer", author: "William Gibson", coverUrl: "https://books.google.com/books/content?id=u2b4DwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Sci-Fi & Fantasy", pageCount: 271, status: "to-read", progressPercent: 0, dateAdded: "2025-08-10" },
+  { googleId: "v3c5DwAAQBAJ", title: "The Hitchhiker's Guide to the Galaxy", author: "Douglas Adams", coverUrl: "https://books.google.com/books/content?id=v3c5DwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Sci-Fi & Fantasy", pageCount: 193, status: "finished", progressPercent: 100, rating: 4, dateAdded: "2025-05-05" },
+  { googleId: "w4d6DwAAQBAJ", title: "Snow Crash", author: "Neal Stephenson", coverUrl: "https://books.google.com/books/content?id=w4d6DwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Sci-Fi & Fantasy", pageCount: 440, status: "reading", progressPercent: 30, dateAdded: "2025-08-08" },
+  { googleId: "x5e7DwAAQBAJ", title: "Ender's Game", author: "Orson Scott Card", coverUrl: "https://books.google.com/books/content?id=x5e7DwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Sci-Fi & Fantasy", pageCount: 324, status: "finished", progressPercent: 100, rating: 4, dateAdded: "2025-06-12" },
+  { googleId: "y6f8DwAAQBAJ", title: "American Gods", author: "Neil Gaiman", coverUrl: "https://books.google.com/books/content?id=y6f8DwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Sci-Fi & Fantasy", pageCount: 465, status: "to-read", progressPercent: 0, dateAdded: "2025-08-24" },
+  { googleId: "z7g9DwAAQBAJ", title: "The Left Hand of Darkness", author: "Ursula K. Le Guin", coverUrl: "https://books.google.com/books/content?id=z7g9DwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Sci-Fi & Fantasy", pageCount: 304, status: "finished", progressPercent: 100, rating: 5, dateAdded: "2025-04-28" },
+
+  // 🧠 SELF-IMPROVEMENT (9)
+  { googleId: "a8h0DwAAQBAJ", title: "Atomic Habits", author: "James Clear", coverUrl: "https://books.google.com/books/content?id=a8h0DwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Self-Improvement", pageCount: 320, status: "reading", progressPercent: 72, rating: 5, notes: "Practical systems over motivation.", dateAdded: "2025-07-22" },
+  { googleId: "b9i1DwAAQBAJ", title: "Deep Work", author: "Cal Newport", coverUrl: "https://books.google.com/books/content?id=b9i1DwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Self-Improvement", pageCount: 296, status: "finished", progressPercent: 100, rating: 4, dateAdded: "2025-05-18" },
+  { googleId: "c0j2DwAAQBAJ", title: "The Subtle Art of Not Giving a F*", author: "Mark Manson", coverUrl: "https://books.google.com/books/content?id=c0j2DwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Self-Improvement", pageCount: 224, status: "finished", progressPercent: 100, rating: 3, dateAdded: "2025-06-08" },
+  { googleId: "d1k3DwAAQBAJ", title: "Mindset", author: "Carol S. Dweck", coverUrl: "https://books.google.com/books/content?id=d1k3DwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Self-Improvement", pageCount: 276, status: "to-read", progressPercent: 0, dateAdded: "2025-08-15" },
+  { googleId: "e2l4DwAAQBAJ", title: "Grit", author: "Angela Duckworth", coverUrl: "https://books.google.com/books/content?id=e2l4DwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Self-Improvement", pageCount: 352, status: "reading", progressPercent: 48, rating: 4, dateAdded: "2025-07-30" },
+  { googleId: "f3m5DwAAQBAJ", title: "Essentialism", author: "Greg McKeown", coverUrl: "https://books.google.com/books/content?id=f3m5DwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Self-Improvement", pageCount: 272, status: "finished", progressPercent: 100, rating: 4, dateAdded: "2025-05-25" },
+  { googleId: "g4n6DwAAQBAJ", title: "The 7 Habits of Highly Effective People", author: "Stephen R. Covey", coverUrl: "https://books.google.com/books/content?id=g4n6DwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Self-Improvement", pageCount: 381, status: "to-read", progressPercent: 0, dateAdded: "2025-08-28" },
+  { googleId: "h5o7DwAAQBAJ", title: "How to Win Friends and Influence People", author: "Dale Carnegie", coverUrl: "https://books.google.com/books/content?id=h5o7DwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Self-Improvement", pageCount: 288, status: "finished", progressPercent: 100, rating: 4, dateAdded: "2025-04-10" },
+  { googleId: "i6p8DwAAQBAJ", title: "Make Your Bed", author: "William H. McRaven", coverUrl: "https://books.google.com/books/content?id=i6p8DwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Self-Improvement", pageCount: 131, status: "finished", progressPercent: 100, rating: 3, dateAdded: "2025-06-01" },
+
+  // 💻 TECH & PROGRAMMING (9)
+  { googleId: "j7q9DwAAQBAJ", title: "Clean Code", author: "Robert C. Martin", coverUrl: "https://books.google.com/books/content?id=j7q9DwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Tech & Programming", pageCount: 464, status: "reading", progressPercent: 55, rating: 5, notes: "Foundational for maintainable code.", dateAdded: "2025-07-05" },
+  { googleId: "k8r0DwAAQBAJ", title: "The Pragmatic Programmer", author: "David Thomas & Andrew Hunt", coverUrl: "https://books.google.com/books/content?id=k8r0DwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Tech & Programming", pageCount: 352, status: "finished", progressPercent: 100, rating: 5, dateAdded: "2025-05-30" },
+  { googleId: "l9s1DwAAQBAJ", title: "Designing Data-Intensive Applications", author: "Martin Kleppmann", coverUrl: "https://books.google.com/books/content?id=l9s1DwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Tech & Programming", pageCount: 616, status: "reading", progressPercent: 38, rating: 5, dateAdded: "2025-08-02" },
+  { googleId: "m0t2DwAAQBAJ", title: "You Don't Know JS Yet", author: "Kyle Simpson", coverUrl: "https://books.google.com/books/content?id=m0t2DwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Tech & Programming", pageCount: 278, status: "to-read", progressPercent: 0, dateAdded: "2025-08-19" },
+  { googleId: "n1u3DwAAQBAJ", title: "Refactoring", author: "Martin Fowler", coverUrl: "https://books.google.com/books/content?id=n1u3DwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Tech & Programming", pageCount: 448, status: "finished", progressPercent: 100, rating: 4, dateAdded: "2025-06-14" },
+  { googleId: "o2v4DwAAQBAJ", title: "Code Complete", author: "Steve McConnell", coverUrl: "https://books.google.com/books/content?id=o2v4DwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Tech & Programming", pageCount: 960, status: "to-read", progressPercent: 0, dateAdded: "2025-08-26" },
+  { googleId: "p3w5DwAAQBAJ", title: "The Phoenix Project", author: "Gene Kim et al.", coverUrl: "https://books.google.com/books/content?id=p3w5DwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Tech & Programming", pageCount: 345, status: "reading", progressPercent: 65, rating: 4, dateAdded: "2025-07-20" },
+  { googleId: "q4x6DwAAQBAJ", title: "Structure and Interpretation of Computer Programs", author: "Harold Abelson", coverUrl: "https://books.google.com/books/content?id=q4x6DwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Tech & Programming", pageCount: 657, status: "to-read", progressPercent: 0, dateAdded: "2025-08-30" },
+  { googleId: "r5y7DwAAQBAJ", title: "Introduction to Algorithms", author: "Thomas H. Cormen", coverUrl: "https://books.google.com/books/content?id=r5y7DwAAQBAJ&printsec=frontcover&img=1&zoom=1", genre: "Tech & Programming", pageCount: 1312, status: "finished", progressPercent: 100, rating: 5, notes: "Dense but indispensable reference.", dateAdded: "2025-04-20" },
+];
