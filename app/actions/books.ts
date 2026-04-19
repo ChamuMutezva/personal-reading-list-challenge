@@ -1,6 +1,8 @@
 "use server";
 import { revalidatePath } from "next/cache";
 export interface SearchBook {
+    rating: number | undefined;
+    genre: string;
     googleId: string;
     title: string;
     author: string;
