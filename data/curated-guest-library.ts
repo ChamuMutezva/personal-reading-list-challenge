@@ -1,5 +1,7 @@
 // data/curated-guest-library.ts
 export interface CuratedBook {
+  publishedYear?: number;
+  description?: string;
   googleId: string;
   title: string;
   author: string;

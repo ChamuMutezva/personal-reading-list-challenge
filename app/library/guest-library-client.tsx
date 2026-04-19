@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
+import { CURATED_GUEST_LIBRARY } from "@/data/curated-guest-library";
 import Link from "next/link";
 import Image from "next/image";
 import { useDebounce } from "use-debounce";
@@ -36,16 +37,28 @@ export default function GuestLibraryClient() {
 
     // Load from localStorage after mount (hydration-safe)
     useEffect(() => {
-        if (globalThis.window === undefined) return;
-        const saved = localStorage.getItem("guest_library_v2");
-        if (saved) {
-            try {
-                setLibrary(JSON.parse(saved));
-            } catch (e) {
-                console.warn("Failed to parse guest_library:", e);
+        if (!isGuest || typeof window === "undefined") return;
+
+        const id = requestAnimationFrame(() => {
+            const saved = localStorage.getItem("guest_library_v2");
+
+            if (saved) {
+                // User has existing guest data
+                try {
+                    setLibrary(JSON.parse(saved));
+                } catch (e) {
+                    console.warn("Failed to parse guest_library:", e);
+                    seedLibrary(); // Fallback to curated data
+                }
+            } else {
+                // First-time guest: auto-seed with curated library
+                seedLibrary();
             }
-        }
-    }, []);
+            setLoading(false);
+        });
+
+        return () => cancelAnimationFrame(id);
+    }, [isGuest]);
 
     // Debounced search
     useEffect(() => {
@@ -79,6 +92,29 @@ export default function GuestLibraryClient() {
             cancelled = true;
         };
     }, [debouncedQuery]);
+
+    // Seed library with curated books for first-time guests
+    const seedLibrary = () => {
+        if (typeof window === "undefined") return;
+
+        // Transform CuratedBook → GuestBook shape
+        const guestBooks: GuestBook[] = CURATED_GUEST_LIBRARY.map((book) => ({
+            ...book,
+            // Ensure all required SearchBook fields are present with defaults
+            publishedYear: (book.publishedYear ?? 0).toString(),
+            description: book.description ?? "",
+            // Ensure all required GuestBook fields are present
+            status: "to-read",
+            addedAt: new Date().toISOString(),
+            progressPercent: book.progressPercent ?? 0,
+            pageCount: book.pageCount ?? 0,
+            genre: book.genre ?? "Other",
+            rating: book.rating,
+        }));
+
+        localStorage.setItem("guest_library_v2", JSON.stringify(guestBooks));
+        setLibrary(guestBooks);
+    };
 
     const saveLibrary = (books: GuestBook[]) => {
         if (globalThis.window === undefined) return;
@@ -248,7 +284,7 @@ export default function GuestLibraryClient() {
                                     d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                                 />
                             </svg>
-                            < Button
+                            <Button
                                 type="submit"
                                 disabled={loading}
                                 className="absolute right-2 top-1/2 -translate-y-1/2 px-4 py-2 bg-primary text-foreground rounded-xl text-sm font-medium hover:opacity-90 disabled:opacity-50 transition-opacity"
@@ -363,7 +399,7 @@ export default function GuestLibraryClient() {
                     <div className="text-center py-16">
                         <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-linear-to-br from-primary/10 to-primary/20 flex items-center justify-center">
                             <svg
-                                className="w-10 h-10 text-primary"
+                                className="w-10 h-10 text-foreground"
                                 fill="none"
                                 stroke="currentColor"
                                 viewBox="0 0 24 24"
@@ -379,29 +415,56 @@ export default function GuestLibraryClient() {
                         <h3 className="text-xl font-semibold text-foreground mb-2">
                             Your library is empty
                         </h3>
-                        <p className="text-secondary max-w-md mx-auto mb-6">
+                        <p className="text-foreground max-w-md mx-auto mb-6">
                             Search for books above and add them to start
                             building your personal collection.
                         </p>
-                        <a
-                            href="#search"
-                            className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-background rounded-xl font-medium hover:opacity-90 transition-opacity"
-                        >
-                            <svg
-                                className="w-4 h-4"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
+
+                        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                            <button
+                                onClick={seedLibrary}
+                                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-primary text-foreground rounded-xl font-medium hover:opacity-90 transition-opacity"
                             >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                                />
-                            </svg>
-                            Start Exploring
-                        </a>
+                                <svg
+                                    className="w-4 h-4"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
+                                    />
+                                </svg>
+                                Load Curated Library
+                            </button>
+
+                            <a
+                                href="#search"
+                                className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-foreground rounded-xl font-medium hover:opacity-90 transition-opacity"
+                            >
+                                <svg
+                                    className="w-4 h-4"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                                    />
+                                </svg>
+                                Start Exploring
+                            </a>
+                        </div>
+                        <p className="text-xs text-secondary mt-4 max-w-sm mx-auto">
+                            Or load 45 hand-picked books across genres to
+                            explore instantly.
+                        </p>
                     </div>
                 )}
             </div>
@@ -410,7 +473,7 @@ export default function GuestLibraryClient() {
             <div className="fixed bottom-4 left-4 right-4 sm:hidden z-40">
                 <a
                     href="/sign-up"
-                    className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-primary text-background rounded-xl font-semibold shadow-lg hover:opacity-90 transition-opacity"
+                    className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-primary text-foreground rounded-xl font-semibold shadow-lg hover:opacity-90 transition-opacity"
                 >
                     <svg
                         className="w-4 h-4"

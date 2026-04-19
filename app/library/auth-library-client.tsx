@@ -33,10 +33,16 @@ export default function AuthLibraryClient() {
 
     // Load library on mount
     useEffect(() => {
-        getUserLibraryAction().then((data) => {
-            setLibrary(data);
-            setLibraryLoading(false);
-        });
+        getUserLibraryAction()
+            .then((data) => {
+                setLibrary(data);
+            })
+            .catch(() => {
+                setLibrary([]);
+            })
+            .finally(() => {
+                setLibraryLoading(false);
+            });
     }, []);
 
     // Effect 1: Clear search state when query is empty
@@ -45,7 +51,8 @@ export default function AuthLibraryClient() {
             setSearchResults([]);
             setSearchError(null);
         }
-    }, [debouncedQuery]);
+        console.log("Debounced Query:", library);
+    }, [debouncedQuery, library]);
 
     // Effect 2: Perform search with abort cleanup
     useEffect(() => {
@@ -82,7 +89,7 @@ export default function AuthLibraryClient() {
         async (book: SearchBook) => {
             if (library.some((b) => b.googleId === book.googleId)) return;
 
-            const response = await addBookToLibraryAction(book);           
+            const response = await addBookToLibraryAction(book);
             if (response.success) {
                 const newBook: LibraryBook = {
                     id: crypto.randomUUID(),
