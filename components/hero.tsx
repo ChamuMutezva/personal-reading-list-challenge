@@ -1,7 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
+import { stackServerApp } from "@/stack/server";
 
-export default function HeroSection() {
+export default async function HeroSection() {
+    const user = await stackServerApp.getUser();  
     return (
         <section
             className="relative py-20 md:py-24 px-6 overflow-hidden"
@@ -21,27 +23,40 @@ export default function HeroSection() {
                         Organize, track, and celebrate your reading journey with
                         elegance. A digital home for the modern bibliophile.
                     </p>
-
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                        <Link
-                            href="/signup"
-                            className="w-full sm:w-auto bg-primary-container text-surface px-8 py-3.5 sm:px-10 sm:py-4 rounded-lg text-lg font-medium shadow-lg hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-container focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                        >
-                            Sign Up
-                        </Link>
-                        <Link
-                            href="/signin"
-                            className="w-full sm:w-auto border border-primary-container text-primary-container px-8 py-3.5 sm:px-10 sm:py-4 rounded-lg text-lg font-medium hover:bg-primary-container hover:text-surface transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-container focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                        >
-                            Sign In
-                        </Link>
-                        <Link
-                            href="/library?mode=guest"
-                            className="text-secondary-foreground font-medium hover:opacity-60 transition-colors underline underline-offset-4 decoration-outline-variant py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded px-1 -ml-1"
-                        >
-                            Continue as Guest
-                        </Link>
-                    </div>
+                    {user ? (
+                        <div className="flex flex-col items-start gap-4">
+                            <p className="text-lg sm:text-xl text-secondary-foreground max-w-lg mb-8 sm:mb-10 leading-relaxed font-body">
+                                Welcome back, {user.displayName}!
+                            </p>
+                            <Link
+                                href="/library"
+                                className="w-full sm:w-auto bg-primary-container text-surface px-8 py-3.5 sm:px-10 sm:py-4 rounded-lg text-lg font-medium shadow-lg hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-container focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                            >
+                                View Your Library
+                            </Link>
+                        </div>
+                    ) : (
+                        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                            <Link
+                                href="/signup"
+                                className="w-full sm:w-auto bg-primary-container text-surface px-8 py-3.5 sm:px-10 sm:py-4 rounded-lg text-lg font-medium shadow-lg hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-container focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                            >
+                                Sign Up
+                            </Link>
+                            <Link
+                                href="/signin"
+                                className="w-full sm:w-auto border border-primary-container text-primary-container px-8 py-3.5 sm:px-10 sm:py-4 rounded-lg text-lg font-medium hover:bg-primary-container hover:text-surface transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-container focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                            >
+                                Sign In
+                            </Link>
+                            <Link
+                                href="/library?mode=guest"
+                                className="text-secondary-foreground font-medium hover:opacity-60 transition-colors underline underline-offset-4 decoration-outline-variant py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded px-1 -ml-1"
+                            >
+                                Continue as Guest
+                            </Link>
+                        </div>
+                    )}
                 </div>
 
                 {/* Image & Floating Quote */}

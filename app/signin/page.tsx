@@ -223,7 +223,7 @@ export default function SignInPage() {
                             <p className="text-sm text-on-surface-variant/80">
                                 New to the Archive?{" "}
                                 <Link
-                                    href="/sign-up"
+                                    href="/signup"
                                     className="text-foreground font-semibold hover:underline underline-offset-4 transition-all"
                                 >
                                     Create an account

@@ -16,12 +16,12 @@ export default function SignUpPage() {
             <header className="fixed top-0 w-full z-50 bg-background/70 backdrop-blur-xl border-b border-outline-variant/10 flex justify-between items-center px-6 md:px-8 py-4 md:py-6">
                 <Link
                     href="/"
-                    className="text-xl md:text-2xl font-headline italic text-primary hover:opacity-80 transition-opacity"
+                    className="text-xl md:text-2xl font-headline italic text-foreground hover:opacity-80 transition-opacity"
                 >
                     The Editorial Archive
                 </Link>
                 <div className="hidden md:flex gap-8 items-center">
-                    <span className="font-label text-xs tracking-[0.2em] text-on-surface-variant/70 uppercase">
+                    <span className="font-label text-xs tracking-[0.2em] text-foreground uppercase">
                         Authentication Portal
                     </span>
                 </div>
@@ -33,7 +33,7 @@ export default function SignUpPage() {
 
                 <div className="w-full max-w-6xl grid md:grid-cols-12 gap-0 overflow-hidden rounded-2xl bg-surface-container-low shadow-2xl border border-outline-variant/20 animate-in fade-in slide-in-from-bottom-4 duration-500">
                     {/* Left Editorial Column */}
-                    <div className="md:col-span-5 relative bg-gradient-to-br from-primary to-muted p-8 md:p-12 flex flex-col justify-between overflow-hidden">
+                    <div className="md:col-span-5 relative bg-gradient-to-br from-primary to-surface-tint p-8 md:p-12 flex flex-col justify-between overflow-hidden">
                         <div className="absolute top-0 right-0 p-6 opacity-15">
                             <span
                                 className="material-symbols-outlined text-[10rem]"
@@ -81,7 +81,7 @@ export default function SignUpPage() {
                     {/* Right Sign-Up Form */}
                     <div className="md:col-span-7 bg-surface-container-lowest p-8 sm:p-12 md:p-16 flex flex-col justify-center">
                         <div className="mb-8 md:mb-10">
-                            <h2 className="font-headline text-2xl md:text-3xl text-primary mb-2">
+                            <h2 className="font-headline text-2xl md:text-3xl text-foreground mb-2">
                                 Create Account
                             </h2>
                             <p className="text-on-surface-variant text-sm">
@@ -113,7 +113,7 @@ export default function SignUpPage() {
                                     onClick={() =>
                                         app.signInWithOAuth("google")
                                     }
-                                    className="flex items-center justify-center gap-2 w-full border border-outline-variant/40 hover:border-primary hover:bg-surface-container-low py-3 rounded-xl font-medium text-primary transition-all active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-primary/50"
+                                    className="flex items-center justify-center gap-2 w-full border border-outline-variant/40 hover:border-primary hover:bg-surface-container-low py-3 rounded-xl font-medium text-foreground transition-all active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-primary/50"
                                 >
                                     <svg
                                         className="w-5 h-5"
@@ -138,7 +138,7 @@ export default function SignUpPage() {
                                             fill="#EA4335"
                                         />
                                     </svg>
-                                    <span className="sr-only md:not-sr-only">
+                                    <span className="sr-only text-foreground md:not-sr-only">
                                         Google
                                     </span>
                                 </button>
@@ -147,7 +147,7 @@ export default function SignUpPage() {
                                     onClick={() =>
                                         app.signInWithOAuth("github")
                                     }
-                                    className="flex items-center justify-center gap-2 w-full border border-outline-variant/40 hover:border-primary hover:bg-surface-container-low py-3 rounded-xl font-medium text-primary transition-all active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-primary/50"
+                                    className="flex items-center justify-center gap-2 w-full border border-outline-variant/40 hover:border-primary hover:bg-surface-container-low py-3 rounded-xl font-medium text-foreground transition-all active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-primary/50"
                                 >
                                     <svg
                                         className="w-5 h-5"
@@ -157,7 +157,7 @@ export default function SignUpPage() {
                                     >
                                         <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879v-6.99h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.99C18.343 21.128 22 16.991 22 12z" />
                                     </svg>
-                                    <span className="sr-only md:not-sr-only">
+                                    <span className="sr-only text-foreground md:not-sr-only">
                                         GitHub
                                     </span>
                                 </button>
@@ -169,8 +169,8 @@ export default function SignUpPage() {
                             <p className="text-sm text-on-surface-variant/80">
                                 Already a member?{" "}
                                 <Link
-                                    href="/sign-in"
-                                    className="text-primary font-semibold hover:underline underline-offset-4 transition-all"
+                                    href="/signin"
+                                    className="text-foreground font-semibold hover:underline underline-offset-4 transition-all"
                                 >
                                     Sign in to your account
                                 </Link>
